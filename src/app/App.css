@@ -1,0 +1,530 @@
+/**
+ * App.css - Estilos del componente principal
+ * ============================================
+ *
+ * Este archivo contiene todos los estilos del portal de finanzas.
+ * No usa clases de utilidad de Tailwind; todos los estilos se
+ * declaran con selectores CSS clasicos.
+ *
+ * Estructura:
+ *  1. Variables CSS reutilizables
+ *  2. Estilos generales / resets
+ *  3. Estilos de la cabecera
+ *  4. Estilos de la seccion Hero
+ *  5. Estilos del boton de llamada a la accion
+ *  6. Estilos de la seccion de servicios
+ *  7. Estilos de la seccion de estadisticas
+ *  8. Estilos del pie de pagina
+ *  9. Media queries para diseno adaptable
+ */
+
+/* ===========================================
+   1. VARIABLES CSS - Valores reutilizables
+   =========================================== */
+
+:root {
+  /* Paleta de colores */
+  --color-primario: #00e5a0;
+  --color-fondo-oscuro: #080c14;
+  --color-fondo-tarjeta: #0e1420;
+  --color-texto-claro: #a8b4c8;
+  --color-texto-oscuro: #607080;
+  --color-borde: rgba(255, 255, 255, 0.07);
+
+  /* Unidades de espaciado */
+  --espaciado-xs: 4px;
+  --espaciado-sm: 8px;
+  --espaciado-md: 12px;
+  --espaciado-base: 16px;
+  --espaciado-lg: 24px;
+  --espaciado-xl: 32px;
+
+  /* Dimensiones */
+  --ancho-maximo: 1200px;
+  --radio-borde: 8px;
+
+  /* Tipografia */
+  --fuente-principal: "Inter", sans-serif;
+}
+
+/* ===========================================
+   2. ESTILOS GENERALES - Resets y layout base
+   =========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo-oscuro);
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.aplicacion {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor {
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: 0 var(--espaciado-lg);
+  width: 100%;
+}
+
+/* Enlaces por defecto */
+a {
+  color: var(--color-primario);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* ===========================================
+   3. CABECERA - Barra de navegacion superior
+   ===========================================
+   Se mantiene fija en la parte superior mientras el usuario
+   se desplaza por las secciones de la pagina. */
+
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background-color: rgba(8, 12, 20, 0.95);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.contenedor-cabecera {
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+  padding: var(--espaciado-base) var(--espaciado-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logotipo de la cabecera */
+.contenedor-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--espaciado-md);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.icono-logo {
+  font-size: 24px;
+}
+
+.texto-logo {
+  background: linear-gradient(135deg, var(--color-primario), #0076ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Menu de navegacion para pantallas grandes */
+.navegacion-escritorio {
+  display: flex;
+  gap: var(--espaciado-xl);
+  margin: 0 var(--espaciado-lg);
+}
+
+.enlace-navegacion {
+  font-size: 14px;
+  color: var(--color-texto-oscuro);
+  transition: color 0.2s ease;
+}
+
+.enlace-navegacion:hover {
+  color: var(--color-primario);
+}
+
+/* Boton hamburguesa para abrir/cerrar el menu en moviles */
+.boton-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Menu desplegable para moviles */
+.navegacion-movil {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--color-borde);
+  background-color: var(--color-fondo-tarjeta);
+  padding: var(--espaciado-base) var(--espaciado-lg);
+  gap: var(--espaciado-base);
+}
+
+.enlace-movil {
+  font-size: 14px;
+  color: var(--color-texto-oscuro);
+}
+
+/* ===========================================
+   4. SECCION HERO - Mensaje de bienvenida
+   =========================================== */
+
+.seccion-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 229, 160, 0.1),
+    rgba(0, 118, 255, 0.05)
+  );
+  border-bottom: 1px solid var(--color-borde);
+  padding: var(--espaciado-xl) var(--espaciado-lg);
+  text-align: center;
+}
+
+.contenido-hero {
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+}
+
+.titulo-hero {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: var(--espaciado-lg);
+  line-height: 1.2;
+}
+
+/* Resalta una palabra clave dentro del titulo en color primario */
+.titulo-hero strong {
+  color: var(--color-primario);
+}
+
+.subtitulo-hero {
+  font-size: 18px;
+  color: var(--color-texto-claro);
+  margin-bottom: var(--espaciado-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===========================================
+   5. BOTON DE LLAMADA A LA ACCION (CTA)
+   =========================================== */
+
+.boton-llamada-accion {
+  background-color: var(--color-primario);
+  color: var(--color-fondo-oscuro);
+  border: none;
+  padding: var(--espaciado-md) var(--espaciado-lg);
+  border-radius: var(--radio-borde);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton-llamada-accion:hover {
+  background-color: #00c98e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 229, 160, 0.2);
+}
+
+/* ===========================================
+   6. SECCION DE SERVICIOS
+   =========================================== */
+
+.seccion-servicios {
+  padding: var(--espaciado-xl) var(--espaciado-lg);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.titulo-seccion {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--espaciado-md);
+}
+
+.subtitulo-seccion {
+  font-size: 18px;
+  color: var(--color-texto-claro);
+  text-align: center;
+  margin-bottom: var(--espaciado-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cuadricula de tarjetas - 4 columnas en pantalla grande */
+.cuadricula-servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--espaciado-lg);
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+}
+
+/* Tarjeta de servicio individual */
+.tarjeta-servicio {
+  background-color: var(--color-fondo-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: var(--espaciado-lg);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tarjeta-servicio:hover {
+  border-color: var(--color-primario);
+  background-color: rgba(0, 229, 160, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 229, 160, 0.1);
+}
+
+.contenedor-icono-tarjeta {
+  font-size: 40px;
+  margin-bottom: var(--espaciado-base);
+}
+
+.titulo-tarjeta {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--espaciado-sm);
+}
+
+.descripcion-tarjeta {
+  font-size: 14px;
+  color: var(--color-texto-claro);
+  margin-bottom: var(--espaciado-base);
+  line-height: 1.6;
+}
+
+.contenedor-estado-tarjeta {
+  display: flex;
+  gap: var(--espaciado-sm);
+}
+
+.etiqueta-estado {
+  background-color: rgba(0, 229, 160, 0.1);
+  color: var(--color-primario);
+  padding: var(--espaciado-xs) var(--espaciado-md);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ===========================================
+   7. SECCION DE ESTADISTICAS
+   =========================================== */
+
+.seccion-estadisticas {
+  padding: var(--espaciado-xl) var(--espaciado-lg);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+/* Cuadricula de estadisticas - 4 columnas */
+.cuadricula-estadisticas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--espaciado-lg);
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+}
+
+.tarjeta-estadistica {
+  background-color: var(--color-fondo-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: var(--espaciado-lg);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tarjeta-estadistica:hover {
+  border-color: var(--color-primario);
+  transform: translateY(-5px);
+}
+
+.icono-estadistica {
+  width: 40px;
+  height: 40px;
+  color: var(--color-primario);
+  margin: 0 auto var(--espaciado-base);
+}
+
+.etiqueta-estadistica {
+  font-size: 12px;
+  color: var(--color-texto-oscuro);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--espaciado-sm);
+}
+
+.valor-estadistica {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+/* ===========================================
+   8. PIE DE PAGINA
+   =========================================== */
+
+.pie-pagina {
+  background-color: var(--color-fondo-tarjeta);
+  border-top: 1px solid var(--color-borde);
+  padding: var(--espaciado-xl) var(--espaciado-lg);
+  margin-top: auto;
+}
+
+.contenido-pie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--espaciado-lg);
+  max-width: var(--ancho-maximo);
+  margin: 0 auto var(--espaciado-lg);
+  padding-bottom: var(--espaciado-lg);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.seccion-pie h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: var(--espaciado-md);
+  color: #ffffff;
+}
+
+.seccion-pie p,
+.seccion-pie a {
+  font-size: 13px;
+  color: var(--color-texto-claro);
+  margin-bottom: var(--espaciado-sm);
+}
+
+.seccion-pie ul {
+  list-style: none;
+}
+
+.seccion-pie ul li {
+  margin-bottom: var(--espaciado-sm);
+}
+
+.seccion-pie a:hover {
+  color: var(--color-primario);
+}
+
+.pie-inferior {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-texto-oscuro);
+  max-width: var(--ancho-maximo);
+  margin: 0 auto;
+}
+
+/* ===========================================
+   9. MEDIA QUERIES - Diseno adaptable
+   =========================================== */
+
+/* Tablets y pantallas medianas (max 768px) */
+@media (max-width: 768px) {
+  .boton-menu {
+    display: block;
+  }
+
+  .navegacion-escritorio {
+    display: none;
+  }
+
+  .titulo-hero {
+    font-size: 32px;
+  }
+
+  .subtitulo-hero {
+    font-size: 16px;
+  }
+
+  .cuadricula-servicios {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cuadricula-estadisticas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seccion-hero,
+  .seccion-servicios,
+  .seccion-estadisticas,
+  .pie-pagina {
+    padding-top: var(--espaciado-lg);
+    padding-bottom: var(--espaciado-lg);
+  }
+
+  .titulo-seccion {
+    font-size: 24px;
+  }
+}
+
+/* Moviles (max 480px) */
+@media (max-width: 480px) {
+  .titulo-hero {
+    font-size: 24px;
+  }
+
+  .subtitulo-hero {
+    font-size: 14px;
+  }
+
+  .cuadricula-servicios {
+    grid-template-columns: 1fr;
+  }
+
+  .cuadricula-estadisticas {
+    grid-template-columns: 1fr;
+  }
+
+  .seccion-hero,
+  .seccion-servicios,
+  .seccion-estadisticas,
+  .pie-pagina {
+    padding-left: var(--espaciado-base);
+    padding-right: var(--espaciado-base);
+    padding-top: var(--espaciado-base);
+    padding-bottom: var(--espaciado-base);
+  }
+
+  .titulo-seccion {
+    font-size: 20px;
+  }
+
+  .tarjeta-servicio {
+    padding: var(--espaciado-base);
+  }
+
+  .navegacion-movil {
+    padding: var(--espaciado-md) var(--espaciado-base);
+  }
+
+  .contenido-pie {
+    gap: var(--espaciado-base);
+    margin-bottom: var(--espaciado-base);
+    padding-bottom: var(--espaciado-base);
+  }
+
+  .seccion-pie h3 {
+    margin-bottom: var(--espaciado-sm);
+  }
+}

@@ -1,0 +1,22 @@
+/**
+ * index.css - Punto de entrada de estilos
+ * ========================================
+ *
+ * Este archivo importa todos los estilos globales de la aplicación.
+ * Los @import van al principio para que se carguen primero.
+ *
+ * Orden de carga:
+ * 1. Fuentes personalizadas (fonts.css)
+ * 2. Estilos globales base (globals.css)
+ * 3. Estilos de la aplicación (se importan desde App.tsx)
+ */
+
+@import './fonts.css';      /* Cargar fuentes personalizadas */
+@import './globals.css';    /* Estilos globales base */
+
+/**
+ * Nota: Los estilos específicos de la app están en:
+ * - src/app/App.css    ← La mayoría de estilos
+ * - Se importan desde src/app/App.tsx
+ */
+
